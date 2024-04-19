@@ -1,8 +1,12 @@
+import Heading from "./components/Heading";
+import Body from './components/Body';
+
 
 function App() {
   return (
-    <div>
-      yt-clone
+    <div className="">
+      <Heading/>
+      <Body/>
     </div>
   );
 }
