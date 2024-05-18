@@ -18,9 +18,9 @@ const Sidebar = () => {
 
 
   return isMenuOpen ? (
-    <div className="py-3">
+    <div className="py-3 mr-5">
       <ul className="">
-        <li className="flex mx-2 my-2 px-3 py-1 text-sm hover:bg-gray-100 rounded-lg cursor-pointer">
+        <li className="flex mx-2 mb-2 px-3 py-1 text-sm hover:bg-gray-100 rounded-lg cursor-pointer">
             <MdHomeFilled className="text-2xl"/>
             <div className="mx-8">Home</div>
         </li>
@@ -73,15 +73,15 @@ const Sidebar = () => {
       </ul>
     </div>
   ) : (
-    <div className="py-3">
+    <div className="py-3 mr-5">
       <ul className="">
-        <li className="small-sidebar flex flex-col justify-start ml-2 mt-2 mb-3 px-3 py-1 hover:bg-gray-100 rounded-lg cursor-pointer">
+        <li className="small-sidebar flex flex-col justify-start ml-2 mb-3 px-3 py-1 hover:bg-gray-100 rounded-lg cursor-pointer">
             <MdHomeFilled className="text-2xl mb-1"/>
-            <div className="font-semibold">Home</div>
+            <div className="mx-[-0.15rem] font-semibold">Home</div>
         </li>
         <li className="small-sidebar flex flex-col justify-start ml-2 mt-2 mb-3 px-3 py-1 hover:bg-gray-100 rounded-lg cursor-pointer">
             <img src={shortsLogo} alt="shorts" className="max-w-6 max-h-6 font-bold mb-1"></img>
-            <div className="font-semibold">Shorts</div>
+            <div className="mx-[-0.15rem] font-semibold">Shorts</div>
         </li>
         <li className="small-sidebar flex flex-col justify-start ml-2 mt-2 mb-3 px-3 py-1 hover:bg-gray-100 rounded-lg cursor-pointer">
             <img src={subs} alt="subs" className="max-w-6 max-h-6 font-bold mb-1"></img>

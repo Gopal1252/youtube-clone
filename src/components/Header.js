@@ -6,7 +6,6 @@ import { MdOutlineVideoCall } from "react-icons/md";
 import { useDispatch } from "react-redux";
 import { toggleMenu } from "../utils/appSlice";
 
-
 const Header = () => {
 
   const dispatch = useDispatch();
