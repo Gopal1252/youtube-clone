@@ -7,7 +7,8 @@ const VideoCard = ({info}) => {
   // console.log(info);
   const {channelTitle, title, thumbnails} = info?.snippet;
   const {viewCount} = info?.statistics;
-    
+
+
   const nFormatter=(num, digits) => {
     const lookup = [
       { value: 1, symbol: "" },
@@ -23,17 +24,16 @@ const VideoCard = ({info}) => {
       return num >= item.value;
     });
     return item ? (num / item.value).toFixed(digits).replace(rx, "$1") + item.symbol : "0";
-  }
+  } 
 
   return (
-    <div className={isMenuOpen ? 'p-2 m-2 max-w-96' : 'p-2 m-2 max-w-80'}>
-        <img src={thumbnails?.medium.url} alt="thumbnail" className="rounded-xl" />
+    <div className= "m-2 group cursor-pointer rounded-xl">
+        <img src={thumbnails?.medium.url} alt="thumbnail" className="rounded-xl group-hover:rounded-none w-full" />
           <div className="font-medium my-2 text-wrap">{title}</div>
           <div className="text-sm text-gray-600">
             <h2>{channelTitle}</h2>
             <h3>{nFormatter(viewCount,1)}</h3>
-          </div>
-          
+          </div>  
     </div>
   )
 }

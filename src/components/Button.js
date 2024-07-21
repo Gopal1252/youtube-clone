@@ -6,5 +6,5 @@ const Button = ({name}) => {
     </div>
   )
 }
-
+ 
 export default Button

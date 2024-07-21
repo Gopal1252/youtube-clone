@@ -18,7 +18,7 @@ const Sidebar = () => {
 
 
   return isMenuOpen ? (
-    <div className="py-3 mr-5">
+    <div className="py-3 mr-8">
       <ul className="">
         <li className="flex mx-2 mb-2 px-3 py-1 text-sm hover:bg-gray-100 rounded-lg cursor-pointer">
             <MdHomeFilled className="text-2xl"/>
@@ -33,7 +33,7 @@ const Sidebar = () => {
             <div className="mx-8">Subscriptons</div>
         </li>
       </ul>
-      <hr className="mx-2 mt-3"/>
+      <hr className="m-2 mt-3"/>
       <div className="flex text-md font-semibold mx-2 my-2 px-3 py-2 hover:bg-gray-100 rounded-lg cursor-pointer">
         You
         <MdKeyboardArrowRight className="text-2xl ml-2"/>
@@ -73,7 +73,7 @@ const Sidebar = () => {
       </ul>
     </div>
   ) : (
-    <div className="py-3 mr-5">
+    <div className="py-3 mr-8">
       <ul className="">
         <li className="small-sidebar flex flex-col justify-start ml-2 mb-3 px-3 py-1 hover:bg-gray-100 rounded-lg cursor-pointer">
             <MdHomeFilled className="text-2xl mb-1"/>
