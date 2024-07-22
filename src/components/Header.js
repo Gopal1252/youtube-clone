@@ -5,6 +5,7 @@ import { CiBellOn } from "react-icons/ci";
 import { MdOutlineVideoCall } from "react-icons/md";
 import { useDispatch } from "react-redux";
 import { toggleMenu } from "../utils/appSlice";
+import { Link } from "react-router-dom";
 
 const Header = () => {
 
@@ -19,7 +20,9 @@ const Header = () => {
       <div className="col-start-1 col-span-1 flex items-center">
         <div onClick={() => toggleMenuHandler()} className="hover:bg-[#e5e5e5] p-1 rounded-full"><MdMenu className="text-2xl cursor-pointer"/></div>
         <div className="max-w-24 align-center ml-6">
-          <img src="/images/yt-logo.png" alt="light-logo" className="cursor-pointer" />
+          <Link to="/">
+            <img src="/images/yt-logo.png" alt="light-logo" className="cursor-pointer" />
+          </Link>
           {/* <img src="/images/yt-logo-dark.png" alt="dark-logo" className="hidden dark:inline" /> */}
         </div>
       </div>

@@ -10,6 +10,7 @@ import { GoClock } from "react-icons/go";
 import { PiThumbsUpLight } from "react-icons/pi";
 import videolibrary from "../assets/videolibrary.png";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 
 const Sidebar = () => {
@@ -20,10 +21,12 @@ const Sidebar = () => {
   return isMenuOpen ? (
     <div className="py-3 mr-8">
       <ul className="">
-        <li className="flex mx-2 mb-2 px-3 py-1 text-sm hover:bg-gray-100 rounded-lg cursor-pointer">
-            <MdHomeFilled className="text-2xl"/>
-            <div className="mx-8">Home</div>
-        </li>
+        <Link to="/">
+          <li className="flex mx-2 mb-2 px-3 py-1 text-sm hover:bg-gray-100 rounded-lg cursor-pointer">
+              <MdHomeFilled className="text-2xl"/>
+              <div className="mx-8">Home</div>
+          </li>
+        </Link>
         <li className="flex mx-2 my-2 px-3 py-1 text-sm hover:bg-gray-100 rounded-lg cursor-pointer">
             <img src={shortsLogo} alt="shorts" className="max-w-6 max-h-6 font-bold"></img>
             <div className="mx-8">Shorts</div>
