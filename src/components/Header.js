@@ -3,12 +3,13 @@ import { IoIosSearch } from "react-icons/io";
 import { FaCircleUser } from "react-icons/fa6";
 import { CiBellOn } from "react-icons/ci";
 import { MdOutlineVideoCall } from "react-icons/md";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toggleMenu } from "../utils/appSlice";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { YOUTUBE_SEARCH_API } from "../utils/constants"
 import { CiSearch } from "react-icons/ci";
+import { cacheResults } from "../utils/searchSlice";
 
 
 const Header = () => {
@@ -16,23 +17,38 @@ const Header = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [searchSuggestions, setSearchSuggestions] = useState(["loading suggestions..."]);
   const [showSuggestions, setShowSuggestions] = useState(false);
-  useEffect(() => {
-    const timer = setTimeout(() => getSearchSuggestions(),200);
 
+  const dispatch = useDispatch();
+
+
+  const searchCache = useSelector((store) => store.search);
+
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if(searchCache[searchQuery]){
+        setSearchSuggestions(searchCache[searchQuery]);
+      }
+      else{
+        getSearchSuggestions();
+      }
+    },200);
     return () => {
       clearTimeout(timer);
     }
   }, [searchQuery])
 
+
   const getSearchSuggestions = async () => {
-    // console.log(searchQuery);
     const data = await fetch(YOUTUBE_SEARCH_API + searchQuery);
     const json = await data.json();
-    // console.log(json[1]);
     setSearchSuggestions(json[1]);
+    dispatch(
+      cacheResults({
+      [searchQuery] : json[1]
+    }));
   }
 
-  const dispatch = useDispatch();
 
   const toggleMenuHandler = () => {
     dispatch(toggleMenu());
@@ -46,7 +62,6 @@ const Header = () => {
           <Link to="/">
             <img src="/images/yt-logo.png" alt="light-logo" className="cursor-pointer" />
           </Link>
-          {/* <img src="/images/yt-logo-dark.png" alt="dark-logo" className="hidden dark:inline" /> */}
         </div>
       </div>
       <div className="col-start-2 col-span-4 flex justify-center items-center">
