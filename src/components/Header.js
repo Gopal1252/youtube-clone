@@ -6,8 +6,31 @@ import { MdOutlineVideoCall } from "react-icons/md";
 import { useDispatch } from "react-redux";
 import { toggleMenu } from "../utils/appSlice";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { YOUTUBE_SEARCH_API } from "../utils/constants"
+import { CiSearch } from "react-icons/ci";
+
 
 const Header = () => {
+
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchSuggestions, setSearchSuggestions] = useState(["loading suggestions..."]);
+  const [showSuggestions, setShowSuggestions] = useState(false);
+  useEffect(() => {
+    const timer = setTimeout(() => getSearchSuggestions(),200);
+
+    return () => {
+      clearTimeout(timer);
+    }
+  }, [searchQuery])
+
+  const getSearchSuggestions = async () => {
+    // console.log(searchQuery);
+    const data = await fetch(YOUTUBE_SEARCH_API + searchQuery);
+    const json = await data.json();
+    // console.log(json[1]);
+    setSearchSuggestions(json[1]);
+  }
 
   const dispatch = useDispatch();
 
@@ -27,10 +50,25 @@ const Header = () => {
         </div>
       </div>
       <div className="col-start-2 col-span-4 flex justify-center items-center">
-        <div className="text-lg w-[70%] h-[120%] rounded-full border border-[#cccccc] flex justify-between items-center">
-            <input type="text" className="rounded-l-full pl-4 w-[90%] h-[100%] border-transparent outline-blue-500" placeholder="Search"></input>
-            <button className="bg-[#f0ecec] border-l-[#cccccc] w-[10%] h-[100%] rounded-r-full flex justify-center items-center"><IoIosSearch className="text-3xl" /></button>
+        <div className="text-base w-[70%] h-[120%] rounded-full border border-[#cccccc] flex justify-center items-center">
+          <input 
+            type="text" 
+            className="rounded-l-full pl-4 w-[90%] h-[100%] border-transparent outline-blue-500" 
+            placeholder="Search" 
+            value={searchQuery} 
+            onChange={(e) => {
+              return setSearchQuery(e.target.value);
+            }}
+            onFocus={() => setShowSuggestions(true)}
+            onBlur={() => setShowSuggestions(false)} 
+            ></input>
+          <button className="bg-[#f0ecec] border-l-[#cccccc] w-[10%] h-[100%] rounded-r-full flex justify-center items-center"><IoIosSearch className="text-3xl" /></button>
         </div>
+        {showSuggestions && (<div className="bg-white absolute text-base font-medium w-[45%] z-[999] top-[50px] rounded-xl shadow-lg">
+          <ul className="">
+            {searchSuggestions.map(s => <li key={s} className="flex px-4 py-2 hover:bg-gray-100 cursor-pointer"><CiSearch className="mt-1 mr-2" />{s}</li>)}
+          </ul>
+        </div>)}
       </div>
       <div className="col-start-6 col-span-1 flex justify-end items-center">
         <div className="hover:bg-[#e5e5e5] p-1 rounded-full mr-6"><MdOutlineVideoCall className=" text-2xl cursor-pointer" /></div>
