@@ -1,12 +1,27 @@
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
+// import { YT_CHANNEL_START, YT_CHANNEL_END } from "../utils/constants";
+// import { useEffect, useState } from "react";
 
 const VideoCard = ({info}) => {
 
-  const isMenuOpen = useSelector(store => store.app.isMenuOpen)
+  // const [channelImage,setChannelImage] = useState("");
+
+  // const isMenuOpen = useSelector(store => store.app.isMenuOpen)
 
   // console.log(info);
-  const {channelTitle, title, thumbnails} = info?.snippet;
+  const {channelTitle, channelId, title, thumbnails} = info?.snippet;
   const {viewCount} = info?.statistics;
+
+  // useEffect(()=>{
+  //   const getChannelData = async () => {
+  //     const data = await fetch(YT_CHANNEL_START + channelId + YT_CHANNEL_END);
+  //     const datajson = await data.json();
+  //     setChannelImage(datajson);
+  //   }
+  //   getChannelData();
+  // }, [channelId, channelImage]);
+
+  
 
 
   const nFormatter=(num, digits) => {

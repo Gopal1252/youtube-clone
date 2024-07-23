@@ -64,6 +64,7 @@ const Header = () => {
           </Link>
         </div>
       </div>
+
       <div className="col-start-2 col-span-4 flex justify-center items-center">
         <div className="text-base w-[70%] h-[120%] rounded-full border border-[#cccccc] flex justify-center items-center">
           <input 
@@ -85,6 +86,7 @@ const Header = () => {
           </ul>
         </div>)}
       </div>
+      
       <div className="col-start-6 col-span-1 flex justify-end items-center">
         <div className="hover:bg-[#e5e5e5] p-1 rounded-full mr-6"><MdOutlineVideoCall className=" text-2xl cursor-pointer" /></div>
         <div className="hover:bg-[#e5e5e5] p-1 rounded-full mr-6"><CiBellOn className="text-2xl cursor-pointer" /></div>
