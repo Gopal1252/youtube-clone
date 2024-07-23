@@ -1,31 +1,37 @@
 import React, { useEffect } from 'react'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { closeMenu } from '../utils/appSlice';
 import { useSearchParams } from 'react-router-dom';
+import CommentsContainer from './CommentsContainer.js';
 
 const WatchPage = () => {
 
     const [searchParams] = useSearchParams();
-
-
     const dispatch = useDispatch();
+
+    const isMenuOpen = useSelector((store) => store.app.isOpen);
 
     useEffect(()=> {
         dispatch(closeMenu());
     },[]);
 
   return (
-    <div className=''>
-      <iframe
-        width="560"
-        height="315"
-        src={"https://www.youtube.com/embed/" + searchParams.get("v")}
-        title="YouTube video player"
-        frameBorder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        referrerPolicy="strict-origin-when-cross-origin"
-        allowFullScreen
-      ></iframe>
+    <div className="grid grid-cols-3 gap-4 w-full h-screen px-4 py-4">
+        <div className="col-start-1 col-span-2">
+            <iframe
+              className="w-full h-[60vh] rounded-xl"
+              src={"https://www.youtube.com/embed/" + searchParams.get("v") + "?autoplay=1&mute=1"}
+              title="YouTube video player"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+            ></iframe>
+            <div className="my-5">
+                <CommentsContainer/>
+            </div>
+        </div>
+        <div className="col-start-3 col-span-1">
+        </div>
     </div>
   );
 }
