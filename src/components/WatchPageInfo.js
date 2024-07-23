@@ -59,7 +59,7 @@ const WatchPageInfo = ({videoId}) => {
             <div className='flex'>
                 <div className='bg-[#f1f3f2] flex items-center px-3 py-1 rounded-l-full hover:bg-[#e5e5e4] cursor-pointer border-r'>
                     <BiLike size={25} className=''/>
-                    <div className='ml-1'>{nFormatter(likeCount,1)}</div>
+                    <div className='ml-1 text-sm'>{nFormatter(likeCount,1)}</div>
                 </div>
                 <div className='bg-[#f1f3f2] flex items-center px-3 rounded-r-full hover:bg-[#e5e5e4] cursor-pointer'>
                     <BiDislike size={25} className=''/>

@@ -7,3 +7,5 @@ export const YT_CHANNEL_START = "GET https://youtube.googleapis.com/youtube/v3/c
 export const YT_CHANNEL_END = "&key="+key;
 
 export const VIDEO_API="https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&key=" + key;
+
+export const OFFSET_LIVE_CHAT = 35;
