@@ -40,7 +40,8 @@ const Header = () => {
 
 
   const getSearchSuggestions = async () => {
-    const data = await fetch(YOUTUBE_SEARCH_API + searchQuery);
+    // const data = await fetch(YOUTUBE_SEARCH_API + searchQuery);
+    const data = await fetch(`https://yt-server-zum8.onrender.com/api/data/${searchQuery}`);
     const json = await data.json();
     setSearchSuggestions(json[1]);
     dispatch(
